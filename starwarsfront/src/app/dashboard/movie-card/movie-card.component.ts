@@ -9,8 +9,7 @@ import { Film, SimpleFilm } from 'src/app/core/models/films.model';
 })
 
 export class MovieCardComponent implements OnInit {
-  @Input() MovieID: number;
-  @Input() MovieTitle: string;
+  @Input() SimpleData: SimpleFilm;
   MovieInformation: Film;
 
   constructor(private FilmAPI: FilmsService) { }
@@ -18,8 +17,8 @@ export class MovieCardComponent implements OnInit {
   ngOnInit() {
     // 1: Async request data for the movie from the specified ID
 
-    this.FilmAPI.getMovieInformation(this.MovieID)
-      .then((data: Film) => {
+    this.FilmAPI.getMovieInformation(this.SimpleData.url)
+      .subscribe((data: Film) => {
         this.MovieInformation = data;
       });
   }

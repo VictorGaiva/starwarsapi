@@ -17,7 +17,7 @@ export class CardGridComponent implements OnInit {
   ngOnInit() {
     // 1: Async request data for the movie specified from the URI.
     this.FilmAPI.getMovieList()
-      .then((data: SimpleFilm[]) => {
+      .subscribe((data: SimpleFilm[]) => {
         this.Cards = data;
       });
   }

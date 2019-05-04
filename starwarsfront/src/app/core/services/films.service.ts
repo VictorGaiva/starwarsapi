@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-
+import { map, catchError } from 'rxjs/operators';
 
 import { HttpClient } from '@angular/common/http';
-import { Film, SimpleFilm } from '../models/films.model';
+import { Film, SimpleFilm, FilmFromRequest, SimpleFilmeFromRequest } from '../models/films.model';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class FilmsService {
   constructor(private http: HttpClient) { }
-  ApiPATH = 'https://swapi.co/api/';
+  ApiPATH = 'https://swapi.co/api';
   FilmList: {}[] =
     [{
       title: 'A New Hope',
@@ -212,21 +213,17 @@ export class FilmsService {
   Delay = 0;
 
   getMovieList() {
-    // Create a promise that delivers the filtered data after some timeout
-    return new Promise((next, reject) => {
-      setTimeout(() => {
-        next(this.FilmList.map((obj: SimpleFilm) => {
-          return { title: obj.title, episodeId: obj.episodeId };
-        }));
-      }, this.Delay);
-    });
+    return this.http.get(this.ApiPATH + '/films').pipe(map(data => {
+      // tslint:disable-next-line:no-string-literal
+      return (data['results']).map(element => {
+        return SimpleFilmeFromRequest(element);
+      });
+    }));
+
   }
-  getMovieInformation(searchId: number) {
-    // Create a promise that delivers the filtered data after some timeout
-    return new Promise((next, reject) => {
-      setTimeout(() => {
-        next(this.FilmList.find((obj: Film) => (obj.episodeId === searchId)));
-      }, this.Delay);
-    });
+  getMovieInformation(searchUrl: string) {
+    return this.http.get(searchUrl).pipe(map(data => {
+      return FilmFromRequest(data);
+    }));
   }
 }

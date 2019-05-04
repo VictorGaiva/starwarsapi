@@ -2,16 +2,16 @@
 
   <mat-card-header>
     <div mat-card-avatar class='example-header-image'></div>
-    <mat-card-title>{{MovieTitle}}</mat-card-title>
+    <mat-card-title>{{SimpleData.title}}</mat-card-title>
     <mat-card-subtitle>
-      Episode {{MovieID}}
+      Episode {{SimpleData.episodeId}}
     </mat-card-subtitle>
   </mat-card-header>
 
   <mat-spinner [diameter]='200' *ngIf='!MovieInformation'></mat-spinner>
 
   <img *ngIf='MovieInformation' mat-card-image src='https://material.angular.io/assets/img/examples/shiba2.jpg'
-    alt='Poster from the movie {{MovieTitle}}'>
+    alt='Poster from the movie {{SimpleData.title}}'>
 
   <mat-card-content>
     <p class='align-center'>
@@ -20,6 +20,6 @@
   </mat-card-content>
 
   <mat-card-actions>
-      <a mat-raised-button [routerLink]="[ '/movie', MovieID ]">Know more</a>
+      <a mat-raised-button [routerLink]="[ '/movie', SimpleData.episodeId ]">Know more</a>
   </mat-card-actions>
 </mat-card>
