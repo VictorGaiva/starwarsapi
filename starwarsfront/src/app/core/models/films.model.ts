@@ -18,7 +18,7 @@ const PosterURLs = [
   // tslint:disable-next-line:max-line-length
   'https://imgix.ranker.com/user_node_img/50048/1000953163/original/return-of-the-jedi-style-b-theatrical-poster-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces',
   // tslint:disable-next-line:max-line-length
-  'https://imgix.ranker.com/user_node_img/50048/1000953208/original/the-force-awakens-theatrical-poster-photo-u1?w=650&q=60&fm=pjpg&fit=crop&crop=faces%22',
+  'https://imgix.ranker.com/user_node_img/50048/1000953208/original/the-force-awakens-theatrical-poster-photo-u1?w=650&q=60&fm=pjpg&fit=crop&crop=faces',
 ];
 
 
@@ -71,7 +71,7 @@ export function FilmFromRequest(data: any): Film {
     created: data.created,
     edited: data.edited,
     url: data.url,
-    posterUrl: PosterURLs[data.episode_id],
+    posterUrl: PosterURLs[data.episode_id - 1],
     remoteId: (data.url).split('/').reverse()[1]
   };
 }
