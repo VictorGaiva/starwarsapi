@@ -9,7 +9,7 @@
 
     <mat-spinner [diameter]='200' *ngIf='!MovieInformation'></mat-spinner>
 
-    <img *ngIf='MovieInformation' mat-card-image src='https://material.angular.io/assets/img/examples/shiba2.jpg'
+    <img *ngIf='MovieInformation' mat-card-image src='{{MovieInformation.posterUrl}}'
       alt='Poster from the movie {{SimpleData.title}}'>
 
     <mat-card-content>
