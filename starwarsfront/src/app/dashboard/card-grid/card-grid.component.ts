@@ -1,6 +1,12 @@
+/**
+ * TODO:
+ * - Make template responsible.
+ * - Make a new header for the page.
+ * - Fix grid cards spacing.
+ */
 import { Component, OnInit } from '@angular/core';
 import { FilmsService } from '../../core/services/films.service';
-import { Film, SimpleFilm } from 'src/app/core/models/films.model';
+import { SimpleFilm } from 'src/app/core/models/films.model';
 
 @Component({
   selector: 'app-card-grid',

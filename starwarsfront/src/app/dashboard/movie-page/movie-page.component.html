@@ -1,3 +1,89 @@
-<p>
-  movie-page works!
-</p>
+<div class='container'>
+
+  <mat-card class='card'>
+    <mat-card-header>
+      <div mat-card-avatar class='header-image'></div>
+      <mat-card-title>{{!MovieInformation? '': MovieInformation.title}}</mat-card-title>
+      <mat-card-subtitle>
+        Episode {{!MovieInformation? '': MovieInformation.episodeId}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-spinner [diameter]='200' *ngIf='!MovieInformation'></mat-spinner>
+
+    <img *ngIf='MovieInformation' mat-card-image
+      src='https://imgix.ranker.com/user_node_img/50048/1000953183/original/the-empire-strikes-back-special-edition-poster-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces'
+      alt='Poster from the movie {{!MovieInformation? "": MovieInformation.title}}'>
+
+    <mat-card-content>
+      <p class='align-center'>
+        {{!MovieInformation? '': MovieInformation.openingCrawl}}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <!-- <a mat-raised-button [routerLink]=[CardRoute]>Know more about this movie</a> -->
+    </mat-card-actions>
+  </mat-card>
+  <div>
+    <h2>
+      Main characters
+    </h2>
+    <span *ngIf="MovieInformation">
+      <p *ngFor='let item of MovieInformation.characters'>
+        <a href='{{item}}'>
+          {{item}}
+        </a>
+      </p>
+    </span>
+  </div>
+  <div>
+    <h2>
+      Main Planets
+    </h2>
+    <span *ngIf="MovieInformation">
+      <p *ngFor='let item of MovieInformation.planets'>
+        <a href='{{item}}'>
+          {{item}}
+        </a>
+      </p>
+    </span>
+  </div>
+  <div>
+    <h2>
+      Main Starships
+    </h2>
+    <span *ngIf="MovieInformation">
+      <p *ngFor='let item of MovieInformation.starships'>
+        <a href='{{item}}'>
+          {{item}}
+        </a>
+      </p>
+    </span>
+  </div>
+  <div>
+    <h2>
+      Main Vehicles
+    </h2>
+    <span *ngIf="MovieInformation">
+      <p *ngFor='let item of MovieInformation.vehicles'>
+        <a href='{{item}}'>
+          {{item}}
+        </a>
+      </p>
+    </span>
+  </div>
+  <div>
+    <h2>
+      Main Species
+    </h2>
+    <span *ngIf="MovieInformation">
+      <p *ngFor='let item of MovieInformation.species'>
+        <a href='{{item}}'>
+          {{item}}
+        </a>
+      </p>
+    </span>
+  </div>
+
+</div>

@@ -1,3 +1,8 @@
+/**
+ * TODO:
+ * - Make card sizes responsible.
+ * - Add poster and director images.
+ */
 import { Component, OnInit, Input } from '@angular/core';
 import { FilmsService } from '../../core/services/films.service';
 import { Film, SimpleFilm } from 'src/app/core/models/films.model';
@@ -11,15 +16,16 @@ import { Film, SimpleFilm } from 'src/app/core/models/films.model';
 export class MovieCardComponent implements OnInit {
   @Input() SimpleData: SimpleFilm;
   MovieInformation: Film;
+  CardRoute: string;
 
   constructor(private FilmAPI: FilmsService) { }
 
   ngOnInit() {
-    // 1: Async request data for the movie from the specified ID
-
+    this.CardRoute = '';
     this.FilmAPI.getMovieInformation(this.SimpleData.url)
       .subscribe((data: Film) => {
         this.MovieInformation = data;
+        this.CardRoute = `/movie/${data.remoteId}`.normalize();
       });
   }
 }

@@ -1,0 +1,17 @@
+.back-button {
+  margin-left: 40px;
+  margin-top: 40px;
+  width: 60px;
+  height: 60px;
+}
+
+.card {
+  width: 80%;
+}
+
+.container {
+  align-content: center;
+  margin-left: 15%;
+  margin-right: 10%;
+
+}
