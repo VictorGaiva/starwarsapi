@@ -11,24 +11,7 @@ import { MovieCardComponent } from './dashboard/movie-card/movie-card.component'
 import { CardGridComponent } from './dashboard/card-grid/card-grid.component';
 import { MoviePageComponent } from './dashboard/movie-page/movie-page.component';
 
-const appRoutes: Routes = [
-  {
-    path: 'movies/:id',
-    component: MoviePageComponent
-  },
-  {
-    path: 'movies',
-    component: AppComponent
-  },
-  {
-    path: '**',
-    component: AppComponent
-  },
-  {
-    path: '',
-    component: AppComponent
-  }
-];
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +25,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [
