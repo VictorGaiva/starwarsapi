@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardGridComponent } from '../dashboard/card-grid/card-grid.component';
-import { MoviePageComponent } from '../dashboard/movie-page/movie-page.component';
+import { MoviePageComponent } from '../pages/movie-page/movie-page.component';
+import { HomePageComponent } from '../pages/home-page/home-page.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: CardGridComponent,
+    component: HomePageComponent,
   },
   {
-    path: 'movies/:id',
+    path: 'movies/:movieId',
     component: MoviePageComponent,
   },
 ];

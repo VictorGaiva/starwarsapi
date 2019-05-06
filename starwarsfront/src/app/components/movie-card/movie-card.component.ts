@@ -16,16 +16,15 @@ import { Film, SimpleFilm } from 'src/app/core/models/films.model';
 export class MovieCardComponent implements OnInit {
   @Input() SimpleData: SimpleFilm;
   MovieInformation: Film;
-  CardRoute: string;
+  CardRoute: number;
 
   constructor(private FilmAPI: FilmsService) { }
 
   ngOnInit() {
-    this.CardRoute = '';
     this.FilmAPI.getMovieInformation(this.SimpleData.url)
       .subscribe((data: Film) => {
         this.MovieInformation = data;
-        this.CardRoute = `/movie/${data.remoteId}`.normalize();
+        this.CardRoute = data.remoteId;
       });
   }
 }

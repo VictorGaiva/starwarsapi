@@ -1,7 +1,10 @@
 <mat-grid-list cols='3' rowHeight='1000px' gutterSize='40px'>
+  <span *ngIf='!Cards'>
+    <p>Loading movie list...</p>
+    <mat-spinner [diameter]='200'></mat-spinner>
+  </span>
   <mat-grid-tile *ngFor='let card of Cards' [colspan]='1' [rowspan]='1'>
-    <app-movie-card
-    [SimpleData]='card'>
+    <app-movie-card [SimpleData]='card'>
     </app-movie-card>
   </mat-grid-tile>
 </mat-grid-list>

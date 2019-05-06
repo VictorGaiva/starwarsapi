@@ -1,5 +1,4 @@
 <div class='container'>
-
   <mat-card class='card'>
     <mat-card-header>
       <div mat-card-avatar class='header-image'></div>
@@ -9,10 +8,12 @@
       </mat-card-subtitle>
     </mat-card-header>
 
-    <mat-spinner [diameter]='200' *ngIf='!MovieInformation'></mat-spinner>
+    <span *ngIf='!MovieInformation'>
+      <p>Loading movie data...</p>
+      <mat-spinner [diameter]='200'></mat-spinner>
+    </span>
 
-    <img *ngIf='MovieInformation' mat-card-image
-      src='https://imgix.ranker.com/user_node_img/50048/1000953183/original/the-empire-strikes-back-special-edition-poster-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces'
+    <img *ngIf='MovieInformation' mat-card-image src='{{!MovieInformation? "": MovieInformation.posterUrl}}'
       alt='Poster from the movie {{!MovieInformation? "": MovieInformation.title}}'>
 
     <mat-card-content>
@@ -85,5 +86,4 @@
       </p>
     </span>
   </div>
-
 </div>

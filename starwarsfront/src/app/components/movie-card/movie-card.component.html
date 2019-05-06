@@ -1,0 +1,26 @@
+ <mat-card class='card'>
+   <mat-card-header>
+     <mat-card-title>{{SimpleData.title}}</mat-card-title>
+     <mat-card-subtitle>
+       Episode {{SimpleData.episodeId}}
+     </mat-card-subtitle>
+   </mat-card-header>
+
+   <span *ngIf='!MovieInformation'>
+     <p>Loading movie data...</p>
+     <mat-spinner [diameter]='200'></mat-spinner>
+   </span>
+
+   <img *ngIf='MovieInformation' mat-card-image src='{{MovieInformation.posterUrl}}'
+     alt='Poster from the movie {{SimpleData.title}}'>
+
+   <mat-card-content>
+     <p class='align-center'>
+       {{!MovieInformation? '': MovieInformation.openingCrawl}}
+     </p>
+   </mat-card-content>
+
+   <mat-card-actions>
+     <a mat-raised-button [routerLink]="['/movies',CardRoute]">Know more about this movie</a>
+   </mat-card-actions>
+ </mat-card>
